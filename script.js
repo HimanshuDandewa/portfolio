@@ -9,9 +9,24 @@ window.onscroll = function () {
 };
 
 // Scroll to top behavior
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+document.addEventListener('DOMContentLoaded', function () {
+  const backToTopBtn = document.querySelector('.back-to-top');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  });
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+});
 
 // AOS Init
 AOS.init();
